@@ -1,8 +1,11 @@
 import './globals.css';
 
-import Sidebar from '@/components/sidebar';
 import SupabaseProvider from '@/providers/SupabaseProvider';
 import UserProvider from '@/providers/UserProvider';
+import ToasterProvider from '@/providers/ToasterProvider';
+import ModalProvider from '@/providers/ModalProvider';
+
+import Sidebar from '@/components/sidebar';
 
 import type { Metadata } from 'next'
 import { Figtree } from 'next/font/google'
@@ -22,8 +25,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
+        <ToasterProvider />
         <SupabaseProvider>
           <UserProvider>
+            <ModalProvider />
             <Sidebar>
               {children}
             </Sidebar>
