@@ -1,8 +1,13 @@
+import getSongs from "@/actions/getSongs";
 import Header from "@/components/header";
 import ListItem from "@/components/list-item";
+import PageContent from "./components/page-content";
 
+export const revalidate = 0;    // data in this page will never be cached and will be up to date
 
-export default function Home() {
+export default async function Home() {
+  const songs = await getSongs();
+
   return (
     <div>
       <div className="
@@ -44,9 +49,7 @@ export default function Home() {
               Newest songs
             </h1>
           </div>
-          <div>
-            List of songs
-          </div>
+          <PageContent songs={songs}/>
         </div>
 
       </div>
